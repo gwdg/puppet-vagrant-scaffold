@@ -1,0 +1,34 @@
+# use class path and parameter here - puppet automaticly use this value if you call the class without value for the parameter
+# example:
+# class { 'puppet-vagrant-scaffold::profile::myprofile':
+#     var2 => "my value not from Hiera"
+# }
+# here you set var2 explizit and var1 is used from hiera
+# 
+puppet-vagrant-scaffold::profile::myprofile::var1: 'value'
+puppet-vagrant-scaffold::profile::myprofile::var2: "name@%{hiera('puppet-vagrant-scaffold::profile::myprofile::var1')}"
+puppet-vagrant-scaffold::profile::myprofile::multiline: |
+                                                         -----BEGIN CERTIFICATE-----
+                                                         MIIDhTCCAm2gAwIBAgIJAJykZMb/2T1SMA0GCSqGSIb3DQEBCwUAMFkxCzAJBgNV
+                                                         BAYTAkRFMRUwEwYDVQQIDAxOaWVkZXJzYWNoZW4xEzARBgNVBAcMCkdvZXR0aW5n
+                                                         ZW4xDTALBgNVBAoMBEdXREcxDzANBgNVBAMMBmdlcnJpdDAeFw0xNjAzMTYxMzUx
+                                                         NDRaFw0xNzAzMTYxMzUxNDRaMFkxCzAJBgNVBAYTAkRFMRUwEwYDVQQIDAxOaWVk
+                                                         ZXJzYWNoZW4xEzARBgNVBAcMCkdvZXR0aW5nZW4xDTALBgNVBAoMBEdXREcxDzAN
+                                                         BgNVBAMMBmdlcnJpdDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKB0
+                                                         JzGX+EONphvhyZIXN7yBRYD9jVR+qMhCuWNLdfHU4Z/YuI4fDjOv+OzlaWG8uDJm
+                                                         jWVTRcy7OFVT8pv1MDfJHLMsok8eSSQ3wGaMd5e+Q+tZTrpasRVqEuJoLIJStkyl
+                                                         wKWTMbrTcWdg2cMfFFi4xwI0uCquDTIk8c4NhJNJP6YSy2nUhh20q+rgsYj4Q1Wx
+                                                         20GJYZj8NXFRQELG4agsiRLgEGtwPzE61clSK9w0xK4QzhciO15zw9+UFqvZn2eQ
+                                                         prERhPzWnZxNaDrGdMGi2EhHdm1C4PoAtj1H1ZcQih3iWeCr1fQ1BMeXJHKxwuJq
+                                                         fd2T4iK/GIGTZIu5OjUCAwEAAaNQME4wHQYDVR0OBBYEFKugwZoTau813ihzqX29
+                                                         v7JPMVyKMB8GA1UdIwQYMBaAFKugwZoTau813ihzqX29v7JPMVyKMAwGA1UdEwQF
+                                                         MAMBAf8wDQYJKoZIhvcNAQELBQADggEBAGhfhH/xqITzyvtB7S5aBmWGW58JkaLv
+                                                         sz5J5R/K2jlGNTKaxBtu9xhyUlcVUdNvOvO4G2hrM//T46DptK7K4nOqax2FiOgX
+                                                         TcLwHHzJ9cR612HuY6B7h10jtCuZW/wJvSWSloD1mFllbbshazbZJeAdFwAT+zJP
+                                                         s5ctfIcpqfN/+LEIKwtDfA5AUVuQiFECsRd0EHiaSMzal/g4cfXanHqTmOQVeQ/7
+                                                         M2FOa0BgVY1QWrNttYFoQGxj1XADeGk4KNe1d6CoDF4Uk6ODKtWIqFcwonuvOWld
+                                                         D/Q4hy57SB1skYWagQZFenJUdSGkJ0rW7wlOnIrp3HTVUCxR98CmqYc=
+puppet-vagrant-scaffold::profile::myprofile::array:      &array_infile_reference
+    - "%{hiera('puppet-vagrant-scaffold::profile::myprofile::var1')}"
+    - "new value"
+puppet-vagrant-scaffold::profile::myprofile::array_clone: *array_infile_reference

@@ -1,0 +1,12 @@
+---
+:backends:
+  - yaml
+:logger: console
+:hierarchy:
+  - "nodes/%{::hostname}"
+  - "roles/%{role}"
+  - common
+  - secret
+
+:yaml:
+   :datadir: /etc/puppet/environments
